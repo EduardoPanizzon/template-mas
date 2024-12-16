@@ -11,15 +11,20 @@
 
 mas main {
 
-    agent bob: sample_agent.asl {
-      focus: w.c1 
+  
+    agent entregador1: entregador.asl{
+      beliefs: local(6,1), livre(true)
     }
-
-    agent ar_condicionado: ar_condicionado.asl
-    agent camera: camera.asl
-    agent cortina: cortina.asl
-    agent lampada: lampada.asl
-    agent fechadura: fechadura.asl
+    agent entregador2: entregador.asl{
+      beliefs: local(6,10), livre(true)
+    }
+    agent entregador3: entregador.asl{
+      beliefs: local(10,10), livre(true)
+    }
+    
+    agent coordenador: coordenador.asl{
+      
+    }
 
 
     workspace w {
