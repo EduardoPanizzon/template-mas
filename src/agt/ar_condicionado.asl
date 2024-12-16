@@ -2,8 +2,6 @@
 
 /* Initial beliefs and rules */
 
-temperatura_de_preferencia(jonas,25).
-
 /* Initial goals */
 
 !inicializar_AC.
@@ -27,7 +25,8 @@ temperatura_de_preferencia(jonas,25).
  			& temperatura_de_preferencia(User,TP) & TP \== TD & ligado(false)
  	<-  definir_temperatura(TP);
  		.print("Definindo temperatura baseado na preferência do usuário ", User);
- 		.print("Temperatura: ", TP).
+ 		.print("Temperatura: ", TP);
+		!!climatizar.
  	
  +!definir_temperatura: temperatura_ambiente(TA) & temperatura_ac(TAC) & ligado(false)
  	<-  .print("Usando última temperatura");
@@ -57,4 +56,27 @@ temperatura_de_preferencia(jonas,25).
  	<- 	.print("Não foram implementadas outras opções.");
  		.print("Temperatura regulada.").
 
++!desligar_ac: ligado(true)
+	<-	desliga;
+		.print("Desligando!").
 
++!desligar_ac: true
+	<-	.print("Desligado!").
+
++!invasor_mode: invasor(true)
+	<-	.print("bip");
+		definir_temperatura(15);
+		!climatizar;
+		.wait(15000);
+		.print("bip");
+		definir_temperatura(30);
+		!climatizar;
+		.wait(15000);
+		!invasor_mode.
+
++!invasor_mode: true
+	<-	.print("Parando o AC");
+		definir_temperatura(24).
+
++!seguro : true	
+	<-	-invasor(true)[source(_)].

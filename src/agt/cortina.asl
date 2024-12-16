@@ -19,3 +19,15 @@
  		abrir;
  		?nivel_abertura(ND);
  		.print("Nível de abertura DEPOIS: ", ND).
+
++!fechar_cortina: nivel_abertura(N)
+	<-	.print("Nível de abertura ANTES: ", N);
+ 		fechar;
+ 		?nivel_abertura(ND);
+ 		.print("Nível de abertura DEPOIS: ", ND).
+
++!invasor_mode: invasor(true)
+	<-	!fechar_cortina.
+
++!seguro : true	
+	<-	-invasor(true)[source(_)].

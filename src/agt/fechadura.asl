@@ -40,3 +40,24 @@
  	<- 	trancar;
  		.print("TRANQUEI a porta!");
  		!trancar_porta.
+
+
++!abrir_porta: trancada(true)
+ 	<-  .print("Destrancando e Abrindo Porta!");
+ 		destrancar;
+		abrir.
+ 	
++!abrir_porta: trancada(false) & fechada(true)
+ 	<-  .print("Abrindo Porta!");
+		abrir.
+ 		
++!abrir_porta: fechada(false)
+ 	<- .print("Porta Aberta!").
+
++!invasor_mode: invasor(true)
+	<-	.wait(1500);
+		!abrir_porta.
+
++!seguro : true	
+	<-	-invasor(true)[source(_)];
+		!fechar_porta.

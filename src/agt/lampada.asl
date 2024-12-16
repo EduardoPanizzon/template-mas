@@ -20,3 +20,20 @@
  +!ligar_lampada
  	<-  ligar;
  		.print("Liguei a Lâmpada!").
+
+ +!desligar_lampada
+ 	<-  desligar;
+ 		.print("Desliguei a Lâmpada!").
+
++!invasor_mode: invasor(true)
+	<-	!desligar_lampada;
+		.wait(1500);
+		!ligar_lampada;
+		.wait(1500);
+		!invasor_mode.
+
++!invasor_mode: true
+	<-	!desligar_lampada.
+
++!seguro : true	
+	<-	-invasor(true)[source(_)].
