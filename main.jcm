@@ -22,7 +22,10 @@ mas main {
       beliefs: local(10,10), livre(true)
     }
     
-    agent coordenador: coordenador.asl
+    agent coordenador: coordenador.asl{
+      
+    }
+
 
     workspace w {
       artifact c1: example.Counter(3) 
